@@ -1,0 +1,26 @@
+@import '../../../styles/variables.scss';
+
+.navigationBrand {
+  color: $white;
+}
+
+.navigationProfile {
+  color: $white;
+  display: flex;
+  align-items: center;
+
+  .navigationProfileImage {
+    border: 2px solid $white;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-right: 0.5rem;
+
+    img {
+      width: 25px;
+      height: 25px;
+      position: relative;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+}
