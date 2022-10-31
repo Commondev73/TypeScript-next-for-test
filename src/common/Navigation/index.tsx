@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import Link from 'next/link'
 import personImage from '../../assets/images/person.png'
 import WithUserLogin from '../../hoc/WithUserLogin'
@@ -9,13 +9,17 @@ import { useRouter } from 'next/router'
 import { isEmpty } from 'lodash'
 import { Navbar, Container, Dropdown } from 'react-bootstrap'
 import { EndpointConst } from '../../constants'
+import { IUserJwtPayload } from '../../types/user'
 
-const Navigation = (props) => {
+interface Props {
+  profile: IUserJwtPayload 
+}
+
+const Navigation: FunctionComponent<Props> = (props: Props) => {
   const router = useRouter()
-
   const logout = () => {
     Auth.removeToken()
-    router.reload('/')
+    // router.reload('/')
   }
 
   const ImagePreview = () => {
@@ -35,9 +39,9 @@ const Navigation = (props) => {
             <Dropdown>
               <Dropdown.Toggle id="topbar-dropdown" as="div" className={styles.navigationProfile}>
                 <div className={styles.navigationProfileImage}>
-                  <img src={ImagePreview()} alt="avatar"/>
+                  <img src={ImagePreview()} alt="avatar" />
                 </div>
-                <span>{props.profile.firstName}</span>
+                <span>{props.profile?.firstName}</span>
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item href="/user/profile">Profile</Dropdown.Item>
