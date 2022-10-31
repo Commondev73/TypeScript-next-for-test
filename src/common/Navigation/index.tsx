@@ -12,14 +12,14 @@ import { EndpointConst } from '../../constants'
 import { IUserJwtPayload } from '../../types/user'
 
 interface Props {
-  profile: IUserJwtPayload 
+  profile: IUserJwtPayload
 }
 
 const Navigation: FunctionComponent<Props> = (props: Props) => {
   const router = useRouter()
   const logout = () => {
     Auth.removeToken()
-    // router.reload('/')
+    router.reload()
   }
 
   const ImagePreview = () => {

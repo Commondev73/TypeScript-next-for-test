@@ -3,9 +3,10 @@ import { JwtPayload } from 'jwt-decode'
 export interface ISignUp {
   userName: string
   password: string
+  confirmPassword?: string
   firstName: string
   lastName: string
-  photo?: string
+  photo?: string | null
 }
 
 export interface ISingIn {

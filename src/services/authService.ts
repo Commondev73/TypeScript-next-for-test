@@ -4,7 +4,7 @@ import { EndpointConst } from '../constants'
 import { ISignUp, ISingIn, IUpdate } from '../types/user'
 
 const signUp = async (payload: ISignUp) => {
-  return await AuthClient.post(EndpointConst.AUTH.SIGN_UP, payload)
+  return await axios.post(EndpointConst.AUTH.SIGN_UP, payload)
 }
 
 const signIn = async (payload: ISingIn) => {

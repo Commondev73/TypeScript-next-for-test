@@ -76,6 +76,7 @@ const Login: FunctionComponent = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 isValid={touched.userName && !errors.userName}
+                isInvalid={!!errors.userName}
               />
               <Form.Control.Feedback type="invalid">{errors.userName}</Form.Control.Feedback>
             </Form.Group>
@@ -90,6 +91,7 @@ const Login: FunctionComponent = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 isValid={touched.password && !errors.password}
+                isInvalid={!!errors.password}
               />
               <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
             </Form.Group>
