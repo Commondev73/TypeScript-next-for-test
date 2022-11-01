@@ -111,7 +111,7 @@ const Profile: FunctionComponent = () => {
             title: 'Update profile',
             text: `Successful profile`
           }).then(() => {
-            return router.push('/')
+            return router.reload()
           })
         }
       }
