@@ -19,7 +19,7 @@ const Navigation: FunctionComponent<Props> = (props: Props) => {
   const router = useRouter()
   const logout = () => {
     Auth.removeToken()
-    router.reload()
+    window.location.href = '/'
   }
 
   const ImagePreview = () => {

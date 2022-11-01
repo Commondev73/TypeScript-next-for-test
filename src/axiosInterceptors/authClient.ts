@@ -7,10 +7,7 @@ const token = Auth.getToken()
 const refreshToken = Auth.getRefreshToken()
 
 const axiosInstance: AxiosInstance = axios.create({
-  headers: {
-    'content-type': 'application/json',
-    Accept: 'application/json'
-  }
+  headers: {}
 })
 
 const createRequestInterceptor = () =>
