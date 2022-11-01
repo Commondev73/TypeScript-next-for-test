@@ -19,10 +19,7 @@ import { IUpdate } from '../../types/user'
 
 const Profile: FunctionComponent = () => {
   const router = useRouter()
-  const [userProfile, setUserProfile] = useState<IUpdate>({
-    firstName: '',
-    lastName: '',
-  })
+  const [userProfile, setUserProfile] = useState<IUpdate>()
   const [isLoading, setIsLoading] = useState(false)
   const [photo, setPhoto] = useState('')
   const FILE_SIZE = 1000 * 1000 * 2 // 2MB
@@ -38,8 +35,8 @@ const Profile: FunctionComponent = () => {
 
   const { handleSubmit, handleChange, setFieldValue, handleBlur, values, touched, errors } = useFormik<IUpdate>({
     initialValues: {
-      firstName: userProfile.firstName || '',
-      lastName: userProfile.lastName || '',
+      firstName: userProfile?.firstName || '',
+      lastName: userProfile?.lastName || '',
       photo: ''
     },
     validationSchema: schema,
@@ -83,8 +80,8 @@ const Profile: FunctionComponent = () => {
   const ImagePreview = () => {
     let src = personImage.src
     switch (true) {
-      case userProfile.photo && !photo:
-        src = `${EndpointConst.AUTH.GET_PHOTO}/${userProfile.photo}`
+      case userProfile?.photo && !photo:
+        src = `${EndpointConst.AUTH.GET_PHOTO}/${userProfile?.photo}`
         break
       case !!photo:
         src = photo
