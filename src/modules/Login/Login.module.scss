@@ -1,0 +1,27 @@
+@import '../../../styles/variables.scss';
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 0;
+  background: #5ec9d9;
+  background: -webkit-linear-gradient(top left, #5ec9d9, #4b39e1);
+  background: -moz-linear-gradient(top left, #5ec9d9, #4b39e1);
+  background: linear-gradient(to bottom right, #5ec9d9, #4b39e1);
+
+  .loginWrapper {
+    width: 100%;
+  }
+
+  .loginForm {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: $white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+      rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+      rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+}
