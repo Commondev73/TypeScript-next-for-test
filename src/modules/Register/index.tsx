@@ -12,7 +12,7 @@ import { useFormik } from 'formik'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
-import { ISignUp } from '../../types/user'
+import { ISignUp } from '../../interfaces/user'
 
 const Register: FunctionComponent = () => {
   const router = useRouter()
@@ -76,35 +76,19 @@ const Register: FunctionComponent = () => {
       delete payload.confirmPassword
       payload.photo = photo ? photo : undefined
       const result = await Services.AuthService.signUp(payload)
-      let isSuccess = false
-      if (!isEmpty(result.data)) {
-        const { data = {} } = result.data
-        console.log(data)
-        if (data.message === 'success') {
-          isSuccess = true
-          Swal.fire({
-            icon: 'success',
-            title: 'Register',
-            text: `Successful registration`
-          }).then(() => {
-            return router.push('/')
-          })
-        }
-      }
-      if (!isSuccess) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Register',
-          text: 'error'
-        })
-      }
+      Swal.fire({
+        icon: 'success',
+        title: 'Register',
+        text: `Successful registration`
+      }).then(() => {
+        return router.push('/')
+      })
     } catch (error: any) {
       console.log(error)
-      const { data = {} } = error.response
       Swal.fire({
         icon: 'error',
         title: 'Register',
-        text: data.message || 'error'
+        text: 'error'
       })
     } finally {
       setIsLoading(false)

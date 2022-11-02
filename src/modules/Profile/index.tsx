@@ -15,7 +15,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
 import { EndpointConst } from '../../constants'
-import { IUpdate } from '../../types/user'
+import { IUpdate } from '../../interfaces/user'
 
 const Profile: FunctionComponent = () => {
   const router = useRouter()
@@ -99,36 +99,21 @@ const Profile: FunctionComponent = () => {
       const payload = { ...values }
       payload.photo = photo ? photo : undefined
       const result = await Services.AuthService.updateProfile(payload)
-      let isSuccess = false
-      if (!isEmpty(result.data)) {
-        const { data = {} } = result.data
-        console.log(data)
-        if (data.message === 'success') {
-          isSuccess = true
-          Auth.setToken(data.token, data.refreshToken)
-          Swal.fire({
-            icon: 'success',
-            title: 'Update profile',
-            text: `Successful profile`
-          }).then(() => {
-            return router.reload()
-          })
-        }
-      }
-      if (!isSuccess) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Update profile',
-          text: 'error'
-        })
-      }
-    } catch (error: any) {
+      const { data = {} } = result.data
+      Auth.setToken(data.token, data.refreshToken)
+      Swal.fire({
+        icon: 'success',
+        title: 'Update profile',
+        text: `Successful profile`
+      }).then(() => {
+        return router.reload()
+      })
+    } catch (error) {
       console.log(error)
-      const { data = {} } = error.response
       Swal.fire({
         icon: 'error',
-        title: 'Register',
-        text: data.message || 'error'
+        title: 'Update profile',
+        text: 'error'
       })
     } finally {
       setIsLoading(false)
