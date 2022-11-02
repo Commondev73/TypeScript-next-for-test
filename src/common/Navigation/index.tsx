@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import { isEmpty } from 'lodash'
 import { Navbar, Container, Dropdown } from 'react-bootstrap'
 import { EndpointConst } from '../../constants'
-import { IUserJwtPayload } from '../../types/user'
+import { IUserJwtPayload } from '../../interfaces/user'
 
 interface Props {
   profile: IUserJwtPayload

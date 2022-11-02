@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import { isEmpty } from 'lodash'
 import { useFormik } from 'formik'
 import { Form, Button, Row, Col } from 'react-bootstrap'
-import { ISingIn } from '../../types/user'
+import { ISingIn } from '../../interfaces/user'
 
 const Login: FunctionComponent = () => {
   const router = useRouter()
@@ -35,27 +35,17 @@ const Login: FunctionComponent = () => {
       resetForm()
       const payload = { ...values }
       const result = await Services.AuthService.signIn(payload)
-      let isSuccess = false
       if (!isEmpty(result.data)) {
         const { data = {} } = result.data
-        isSuccess = true
         Auth.setToken(data.token, data.refreshToken)
         return router.reload()
       }
-      if (!isSuccess) {
-        Swal.fire({
-          icon: 'error',
-          title: 'login',
-          text: 'error'
-        })
-      }
     } catch (error: any) {
       console.log(error)
-      const { data = {} } = error.response
       Swal.fire({
         icon: 'error',
-        title: 'Login',
-        text: data.message || 'error'
+        title: 'login',
+        text: 'error'
       })
     } finally {
       setIsLoading(false)

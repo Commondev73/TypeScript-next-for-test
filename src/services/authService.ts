@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { AuthClient } from '../axiosInterceptors'
 import { EndpointConst } from '../constants'
-import { ISignUp, ISingIn, IUpdate } from '../types/user'
+import { ISignUp, ISingIn, IUpdate } from '../interfaces/user'
 
 const signUp = async (payload: ISignUp) => {
   return await axios.post(EndpointConst.AUTH.SIGN_UP, payload)

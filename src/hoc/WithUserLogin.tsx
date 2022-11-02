@@ -2,7 +2,7 @@ import React, { useState, useEffect, ComponentType } from 'react'
 import Auth from '../auth'
 import jwtDecode from 'jwt-decode'
 import { isEmpty } from 'lodash'
-import { IUserJwtPayload } from '../types/user'
+import { IUserJwtPayload } from '../interfaces/user'
 
 interface WithUserLoginProps {
   profile: IUserJwtPayload
